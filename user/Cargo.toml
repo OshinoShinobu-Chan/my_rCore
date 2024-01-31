@@ -11,6 +11,7 @@ target = "riscv64gc-unknown-none-elf"
 [dependencies]
 riscv = { path = "/home/rCore/riscv-master", features = ["inline-asm"] }
 sbi-rt = { version = "0.0.2", features = ["legacy"] }
+buddy_system_allocator = "0.6"
 
 [profile.release]
 debug = true
