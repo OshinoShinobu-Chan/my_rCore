@@ -1,1 +1,8 @@
 /user/target
+/user/Cargo.lock
+/easy-fs/target
+/easy-fs/Cargo.lock
+/easy-fs-fuse/Cargo.lock
+/easy-fs-fuse/target
+/easy-fs-fuse/.vscode
+/easy-fs/.vscode
