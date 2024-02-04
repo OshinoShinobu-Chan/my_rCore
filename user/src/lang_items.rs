@@ -1,4 +1,6 @@
-use core::panic::PanicInfo;
+use core::{panic::PanicInfo};
+
+use crate::exit;
 
 #[panic_handler]
 fn panic_handler(info: &PanicInfo) -> ! {
@@ -13,5 +15,6 @@ fn panic_handler(info: &PanicInfo) -> ! {
     } else {
         error!("", "core panic: {}", info.message().unwrap());
     }
-    loop {}
+    exit(-1);
+    loop { }
 }

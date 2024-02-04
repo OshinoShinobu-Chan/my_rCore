@@ -88,7 +88,7 @@ impl EasyFileSystem {
         // read SuperBlock
         get_block_cache(0, Arc::clone(&block_device))
             .lock()
-            .modify(0, |super_block: &mut SuperBlock| {
+            .read(0, |super_block: &SuperBlock| {
                 assert!(super_block.is_valid(), "Error loading EFS!");
                 let inode_total_block = 
                     super_block.inode_bitmap_blocks + super_block.inode_area_blocks;
@@ -103,7 +103,7 @@ impl EasyFileSystem {
                         super_block.data_area_blocks as usize,
                     ),
                     inode_area_start_block: 1 + super_block.inode_bitmap_blocks,
-                    data_area_start_block: 1 + inode_total_block + super_block.data_area_blocks,
+                    data_area_start_block: 1 + inode_total_block + super_block.data_bitmap_blocks,
                 };
                 Arc::new(Mutex::new(efs))
             })

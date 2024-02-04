@@ -16,7 +16,7 @@ use alloc::string::String;
 use user_lib::console::getchar;
 use user_lib::{exec, fork, waitpid, shutdown};
 
-const PROMPT: &str = "\x1b[34m|user >\x1b[32m>\x1b[33> \x1b[0m ";
+const PROMPT: &str = "\x1b[34m|user >\x1b[32m>\x1b[33m> \x1b[0m";
 
 #[no_mangle]
 pub fn main() -> i32 {

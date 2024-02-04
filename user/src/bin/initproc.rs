@@ -8,8 +8,6 @@ use user_lib::{exec, fork, wait, yield_};
 
 #[no_mangle]
 fn main() -> i32 {
-    exec("filetest_simple\0") as i32
-    /* 
     let mut shell_pid = fork();
     if shell_pid == 0 {
         exec("user_shell\0");
@@ -33,5 +31,5 @@ fn main() -> i32 {
             }
         }
     }
-    0*/
+    0
 }

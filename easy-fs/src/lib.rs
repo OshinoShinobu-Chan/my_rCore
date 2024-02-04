@@ -15,6 +15,5 @@ pub const BLOCK_CACHE_SIZE: usize = 16;
 pub const DIRENT_SIZE: usize = 32;
 
 pub use block_dev::BlockDevice;
-use block_cache::{block_cache_syn_all, get_block_cache};
 pub use efs::EasyFileSystem;
 pub use vfs::Inode;

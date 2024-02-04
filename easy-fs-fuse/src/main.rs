@@ -11,7 +11,6 @@ struct BlockFile(Mutex<File>);
 
 impl BlockDevice for BlockFile {
     fn read_block(&self, block_id: usize, buf: &mut [u8]) {
-        println!("read_block: block_id = {}", block_id);
         let mut file = self.0.lock().unwrap();
         file.seek(SeekFrom::Start((block_id * BLOCK_SZ) as u64))
             .expect("Error when seeking!");
@@ -19,7 +18,6 @@ impl BlockDevice for BlockFile {
     }
 
     fn write_block(&self, block_id: usize, buf: &[u8]) {
-        println!("write_block: block_id = {}", block_id);
         let mut file = self.0.lock().unwrap();
         file.seek(SeekFrom::Start((block_id * BLOCK_SZ) as u64))
             .expect("Error when seeking!");

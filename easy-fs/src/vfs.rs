@@ -1,5 +1,3 @@
-use alloc::fmt::format;
-use alloc::format;
 use alloc::string::String;
 use alloc::sync::Arc;
 use alloc::vec::Vec;
@@ -34,22 +32,6 @@ impl Inode {
             fs,
             block_device,
         }
-    }
-    /// Get the info of inode for displaying
-    pub fn info(&self) -> Vec<String> {
-        let _fs = self.fs.lock();
-        self.read_disk_inode(|disk_inode| {
-            let mut v: Vec<String> = Vec::new();
-            v.push(format!("size: {}", disk_inode.size));
-            if disk_inode.is_dir() {
-                v.push(String::from("type: directory"));
-            } else {
-                v.push(String::from("type: file"));
-            }
-            v.push(format!("block_id: {}", self.block_id));
-            v.push(format!("block_offset: {}", self.block_offset));
-            v
-        })
     }
     /// Call a function over a disk inode to read it
     fn read_disk_inode<V>(&self, f: impl FnOnce(&DiskInode) -> V) -> V {
